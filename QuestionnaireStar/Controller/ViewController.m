@@ -130,7 +130,8 @@
         
         NSMutableArray *columnArr = [[NSMutableArray alloc] init];
         [columnArr addObject:@"单选题"];
-        [columnArr addObject:[NSString stringWithFormat:@"%ld.%@", rowArr.count, arr[0]]];
+//        [columnArr addObject:[NSString stringWithFormat:@"%ld.%@", rowArr.count, arr[0]]];
+        [columnArr addObject:[NSString stringWithFormat:@"%@", arr[0]]];
         
         [columnArr addObject:[NSString stringWithFormat:@"A.%@", arr[3].trim]];
         [columnArr addObject:[NSString stringWithFormat:@"B.%@", arr[4].trim]];
@@ -173,7 +174,8 @@
         
         NSMutableArray *columnArr = [[NSMutableArray alloc] init];
         [columnArr addObject:@"多选题"];
-        [columnArr addObject:[NSString stringWithFormat:@"%ld.%@", rowArr.count, arr[0]]];
+//        [columnArr addObject:[NSString stringWithFormat:@"%ld.%@", rowArr.count, arr[0]]];
+        [columnArr addObject:[NSString stringWithFormat:@"%@", arr[0]]];
         
         [columnArr addObject:[NSString stringWithFormat:@"A.%@", arr[3].trim]];
         [columnArr addObject:[NSString stringWithFormat:@"B.%@", arr[4].trim]];
