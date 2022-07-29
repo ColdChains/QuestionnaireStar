@@ -1,6 +1,6 @@
 //
 //  ViewController.h
-//  问卷星
+//  QuestionnaireStar
 //
 //  Created by lax on 2021/2/28.
 //

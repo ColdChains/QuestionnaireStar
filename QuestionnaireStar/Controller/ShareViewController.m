@@ -1,28 +1,34 @@
 //
-//  TestViewController.m
-//  问卷星
+//  ShareViewController.m
+//  QuestionnaireStar
 //
 //  Created by lax on 2021/2/28.
 //
 
-#import "TestViewController.h"
+#import "ShareViewController.h"
 #import <QuickLook/QuickLook.h>
 
-@interface TestViewController () <QLPreviewControllerDataSource, UIDocumentInteractionControllerDelegate>
+@interface ShareViewController () <QLPreviewControllerDataSource, UIDocumentInteractionControllerDelegate>
+
+@property (copy, nonatomic) NSString *filePath;
+
 @property (strong, nonatomic) UIDocumentInteractionController *documentController;
+
 @end
 
-@implementation TestViewController
+@implementation ShareViewController
+
+- (instancetype)initWithFilePath:(NSString *)filePath
+{
+    self = [super init];
+    if (self) {
+        self.filePath = filePath;
+    }
+    return self;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    if (!self.filePath) {
-        NSString *name = self.type == 0 ? @"file1.xls" : @"file2.xls";
-        self.filePath = [[NSBundle mainBundle] pathForResource:name ofType:nil];
-    }
-    //    self.filePath = @"/Users/apple/Library/Developer/CoreSimulator/Devices/55BA4D81-D70B-4C4B-A650-2ECBB6CCF7E5/data/Containers/Data/Application/98A3F43A-4243-45A7-BE12-A73518FBE92A/Documents/test0330.xlsx";
-//        self.filePath = [[NSBundle mainBundle] pathForResource:@"test0330" ofType:@"xlsx"];
     
     QLPreviewController *previewController = [[QLPreviewController alloc] init];
     previewController.view.frame = self.view.bounds;
@@ -37,8 +43,10 @@
         UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
         rightItem;
     });
+    
 }
 
+// 分享
 - (void)rightAction {
     self.documentController = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:self.filePath]];
     self.documentController.delegate = self;
