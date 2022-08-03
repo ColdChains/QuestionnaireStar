@@ -8,14 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		1823433F2890EC16004797BE /* FileListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1823433E2890EC16004797BE /* FileListViewController.m */; };
+		183D57172898F351009257A4 /* 单选题库2021.xls in Resources */ = {isa = PBXBuildFile; fileRef = 183D57152898F351009257A4 /* 单选题库2021.xls */; };
+		183D57182898F351009257A4 /* 多选题库2021.xls in Resources */ = {isa = PBXBuildFile; fileRef = 183D57162898F351009257A4 /* 多选题库2021.xls */; };
 		18C4F0CF2612C2C400F5761D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C4F0CE2612C2C400F5761D /* AppDelegate.m */; };
 		18C4F0D22612C2C400F5761D /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C4F0D12612C2C400F5761D /* SceneDelegate.m */; };
 		18C4F0D82612C2C400F5761D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18C4F0D62612C2C400F5761D /* Main.storyboard */; };
 		18C4F0DA2612C2C800F5761D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18C4F0D92612C2C800F5761D /* Assets.xcassets */; };
 		18C4F0DD2612C2C800F5761D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18C4F0DB2612C2C800F5761D /* LaunchScreen.storyboard */; };
 		18C4F0E02612C2C800F5761D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C4F0DF2612C2C800F5761D /* main.m */; };
-		18C4F0F62612C31400F5761D /* 单选题库.xls in Resources */ = {isa = PBXBuildFile; fileRef = 18C4F0EA2612C31400F5761D /* 单选题库.xls */; };
-		18C4F0F72612C31400F5761D /* 多选题库.xls in Resources */ = {isa = PBXBuildFile; fileRef = 18C4F0EB2612C31400F5761D /* 多选题库.xls */; };
+		18C4F0F62612C31400F5761D /* 单选题库2022.xls in Resources */ = {isa = PBXBuildFile; fileRef = 18C4F0EA2612C31400F5761D /* 单选题库2022.xls */; };
+		18C4F0F72612C31400F5761D /* 多选题库2022.xls in Resources */ = {isa = PBXBuildFile; fileRef = 18C4F0EB2612C31400F5761D /* 多选题库2022.xls */; };
 		18C4F0F82612C31400F5761D /* UIViewController+Alert.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C4F0EE2612C31400F5761D /* UIViewController+Alert.m */; };
 		18C4F0F92612C31400F5761D /* NSString+Extention.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C4F0F02612C31400F5761D /* NSString+Extention.m */; };
 		18C4F0FA2612C31400F5761D /* ShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C4F0F22612C31400F5761D /* ShareViewController.m */; };
@@ -25,6 +27,8 @@
 /* Begin PBXFileReference section */
 		1823433D2890EC16004797BE /* FileListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FileListViewController.h; sourceTree = "<group>"; };
 		1823433E2890EC16004797BE /* FileListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FileListViewController.m; sourceTree = "<group>"; };
+		183D57152898F351009257A4 /* 单选题库2021.xls */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "单选题库2021.xls"; sourceTree = "<group>"; };
+		183D57162898F351009257A4 /* 多选题库2021.xls */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "多选题库2021.xls"; sourceTree = "<group>"; };
 		18C19D9D2893CC8700931623 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		18C4F0CA2612C2C400F5761D /* QuestionnaireStar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuestionnaireStar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18C4F0CD2612C2C400F5761D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -36,8 +40,8 @@
 		18C4F0DC2612C2C800F5761D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18C4F0DE2612C2C800F5761D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18C4F0DF2612C2C800F5761D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		18C4F0EA2612C31400F5761D /* 单选题库.xls */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "单选题库.xls"; sourceTree = "<group>"; };
-		18C4F0EB2612C31400F5761D /* 多选题库.xls */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "多选题库.xls"; sourceTree = "<group>"; };
+		18C4F0EA2612C31400F5761D /* 单选题库2022.xls */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "单选题库2022.xls"; sourceTree = "<group>"; };
+		18C4F0EB2612C31400F5761D /* 多选题库2022.xls */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "多选题库2022.xls"; sourceTree = "<group>"; };
 		18C4F0ED2612C31400F5761D /* NSString+Extention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extention.h"; sourceTree = "<group>"; };
 		18C4F0EE2612C31400F5761D /* UIViewController+Alert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Alert.m"; sourceTree = "<group>"; };
 		18C4F0EF2612C31400F5761D /* UIViewController+Alert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Alert.h"; sourceTree = "<group>"; };
@@ -97,8 +101,10 @@
 		18C4F0E92612C31400F5761D /* File */ = {
 			isa = PBXGroup;
 			children = (
-				18C4F0EA2612C31400F5761D /* 单选题库.xls */,
-				18C4F0EB2612C31400F5761D /* 多选题库.xls */,
+				183D57152898F351009257A4 /* 单选题库2021.xls */,
+				183D57162898F351009257A4 /* 多选题库2021.xls */,
+				18C4F0EA2612C31400F5761D /* 单选题库2022.xls */,
+				18C4F0EB2612C31400F5761D /* 多选题库2022.xls */,
 			);
 			path = File;
 			sourceTree = "<group>";
@@ -185,10 +191,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				18C4F0DD2612C2C800F5761D /* LaunchScreen.storyboard in Resources */,
-				18C4F0F72612C31400F5761D /* 多选题库.xls in Resources */,
+				18C4F0F72612C31400F5761D /* 多选题库2022.xls in Resources */,
 				18C4F0DA2612C2C800F5761D /* Assets.xcassets in Resources */,
 				18C4F0D82612C2C400F5761D /* Main.storyboard in Resources */,
-				18C4F0F62612C31400F5761D /* 单选题库.xls in Resources */,
+				18C4F0F62612C31400F5761D /* 单选题库2022.xls in Resources */,
+				183D57182898F351009257A4 /* 多选题库2021.xls in Resources */,
+				183D57172898F351009257A4 /* 单选题库2021.xls in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

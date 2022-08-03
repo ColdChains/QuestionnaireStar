@@ -51,17 +51,17 @@
     self.firstTextField.text = [NSUserDefaults.standardUserDefaults objectForKey:@"countSingle"];
     self.secondTextField.text = [NSUserDefaults.standardUserDefaults objectForKey:@"countMultiple"];
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"单选题库" ofType:@"xls"];
-    NSString *name = [path componentsSeparatedByString:@"/"].lastObject;
-    self.bankPath = [path stringByReplacingOccurrencesOfString:name withString:@""];
-    
     // 题库目录
-    self.sourcePathSingle = [[NSBundle mainBundle] pathForResource:@"单选题库" ofType:@"xls"];
-    self.sourcePathMultiple = [[NSBundle mainBundle] pathForResource:@"多选题库" ofType:@"xls"];
+    self.sourcePathSingle = [[NSBundle mainBundle] pathForResource:@"单选题库2022" ofType:@"xls"];
+    self.sourcePathMultiple = [[NSBundle mainBundle] pathForResource:@"多选题库2022" ofType:@"xls"];
     
     //读取文件内容
     self.dataArraySingle = [self readFileFromPath:self.sourcePathSingle];
     self.dataArrayMultiple = [self readFileFromPath:self.sourcePathMultiple];
+    
+    // 获取题库路径
+    NSString *name = [self.sourcePathSingle componentsSeparatedByString:@"/"].lastObject;
+    self.bankPath = [self.sourcePathSingle stringByReplacingOccurrencesOfString:name withString:@""];
 }
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
@@ -74,12 +74,9 @@
     // 使用UTF16才能显示汉字
     NSString *dataStr = [[NSString alloc] initWithData:fileData encoding:NSUTF16StringEncoding];
     // 过滤多余字符
-    dataStr = [dataStr stringByReplacingOccurrencesOfString:@"A." withString:@""];
-    dataStr = [dataStr stringByReplacingOccurrencesOfString:@"B." withString:@""];
-    dataStr = [dataStr stringByReplacingOccurrencesOfString:@"C." withString:@""];
-    dataStr = [dataStr stringByReplacingOccurrencesOfString:@"D." withString:@""];
-    dataStr = [dataStr stringByReplacingOccurrencesOfString:@"E." withString:@""];
-    dataStr = [dataStr stringByReplacingOccurrencesOfString:@"F." withString:@""];
+    for (NSString *str in @[@"A.", @"B.", @"C.", @"D.", @"E.", @"F.", @"A、", @"B、", @"C、", @"D、", @"E、", @"F、"]) {
+        dataStr = [dataStr stringByReplacingOccurrencesOfString:str withString:@""];
+    }
     //转数组
     NSArray *fileArr = [dataStr componentsSeparatedByString:@"\r\n"];
     
@@ -108,35 +105,36 @@
         
         NSMutableArray *columnArr = [[NSMutableArray alloc] init];
         [columnArr addObject:type ?: @"单选题"];
-//        题目    答案解析    正确答案    选项A    选项B    选项C    选项D    选项E    选项F    选项G
-//        [columnArr addObject:[NSString stringWithFormat:@"%ld.%@", rowArr.count, arr[0]]];
+        // 题目
         [columnArr addObject:[NSString stringWithFormat:@"%@", arr[0]]];
-        
-        [columnArr addObject:[NSString stringWithFormat:@"A.%@", arr[3].trim]];
-        [columnArr addObject:[NSString stringWithFormat:@"B.%@", arr[4].trim]];
+        // 选项
+        [columnArr addObject:[NSString stringWithFormat:@"A.%@", arr[2].trim]];
+        [columnArr addObject:[NSString stringWithFormat:@"B.%@", arr[3].trim]];
+        if (arr.count > 4 && ![arr[4].trim isEqualToString:@""]) {
+            [columnArr addObject:[NSString stringWithFormat:@"C.%@", arr[4].trim]];
+        } else {
+            [columnArr addObject:@""];
+        }
         if (arr.count > 5 && ![arr[5].trim isEqualToString:@""]) {
-            [columnArr addObject:[NSString stringWithFormat:@"C.%@", arr[5].trim]];
+            [columnArr addObject:[NSString stringWithFormat:@"D.%@", arr[5].trim]];
         } else {
             [columnArr addObject:@""];
         }
         if (arr.count > 6 && ![arr[6].trim isEqualToString:@""]) {
-            [columnArr addObject:[NSString stringWithFormat:@"D.%@", arr[6].trim]];
+            [columnArr addObject:[NSString stringWithFormat:@"E.%@", arr[6].trim]];
         } else {
             [columnArr addObject:@""];
         }
         if (arr.count > 7 && ![arr[7].trim isEqualToString:@""]) {
-            [columnArr addObject:[NSString stringWithFormat:@"E.%@", arr[7].trim]];
+            [columnArr addObject:[NSString stringWithFormat:@"F.%@", arr[7].trim]];
         } else {
             [columnArr addObject:@""];
         }
-        if (arr.count > 8 && ![arr[8].trim isEqualToString:@""]) {
-            [columnArr addObject:[NSString stringWithFormat:@"F.%@", arr[8].trim]];
-        } else {
-            [columnArr addObject:@""];
-        }
-        
-        [columnArr addObject:arr[2]];
+        // 正确答案
+        [columnArr addObject:arr[1]];
+        // 答案解析
         [columnArr addObject:@""];
+        // 分值
         [columnArr addObject:@"4"];
         NSString *columnStr = [columnArr componentsJoinedByString:@"\t"];
         [rowArr addObject:columnStr];
@@ -155,7 +153,7 @@
     }
     
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    [dateFormat setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    [dateFormat setDateFormat:@"yyyyMMddHHmmss"];
     NSString *name = [NSString stringWithFormat:@"问卷星%@.xlsx", [dateFormat stringFromDate:[NSDate date]]];
     // 生成文件目录
     NSString *filePath = [self.filePath stringByAppendingPathComponent:name];
