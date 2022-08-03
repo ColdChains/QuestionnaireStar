@@ -81,6 +81,7 @@
 - (NSArray<NSString *> *)getFileListWithPath:(NSString *)path {
     NSMutableArray *arr = [NSMutableArray array];
     NSFileManager *fileManger = [NSFileManager defaultManager];
+    
     // 获取目录下的所以内容
     NSArray *dirArray = [fileManger contentsOfDirectoryAtPath:path error:nil];
     NSString *subPath = nil;
@@ -94,7 +95,17 @@
             [arr addObject:name];
         }
     }
-    return arr.copy;
+    
+    //文件排序
+    return [arr sortedArrayUsingComparator:^(NSString * firstPath, NSString* secondPath) {
+        NSString *firstUrl = [path stringByAppendingPathComponent:firstPath];/*获取前一个文件完整路径*/
+        NSString *secondUrl = [path stringByAppendingPathComponent:secondPath];/*获取后一个文件完整路径*/
+        NSDictionary *firstFileInfo = [[NSFileManager defaultManager] attributesOfItemAtPath:firstUrl error:nil];/*获取前一个文件信息*/
+        NSDictionary *secondFileInfo = [[NSFileManager defaultManager] attributesOfItemAtPath:secondUrl error:nil];/*获取后一个文件信息*/
+        id firstData = [firstFileInfo objectForKey:NSFileCreationDate];/*获取前一个文件创建时间*/
+        id secondData = [secondFileInfo objectForKey:NSFileCreationDate];/*获取后一个文件创建时间*/
+        return [secondData compare:firstData];//降序
+    }];
 }
 
 // 获取目录下的所有文件
