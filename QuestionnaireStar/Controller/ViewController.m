@@ -52,8 +52,8 @@
     self.secondTextField.text = [NSUserDefaults.standardUserDefaults objectForKey:@"countMultiple"];
     
     // 题库目录
-    self.sourcePathSingle = [[NSBundle mainBundle] pathForResource:@"单选题库2022" ofType:@"xls"];
-    self.sourcePathMultiple = [[NSBundle mainBundle] pathForResource:@"多选题库2022" ofType:@"xls"];
+    self.sourcePathSingle = [[NSBundle mainBundle] pathForResource:@"单选题库2023" ofType:@"xls"];
+    self.sourcePathMultiple = [[NSBundle mainBundle] pathForResource:@"多选题库2023" ofType:@"xls"];
     
     //读取文件内容
     self.dataArraySingle = [self readFileFromPath:self.sourcePathSingle];

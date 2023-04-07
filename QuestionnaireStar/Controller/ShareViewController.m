@@ -7,6 +7,7 @@
 
 #import "ShareViewController.h"
 #import <QuickLook/QuickLook.h>
+#import <WebKit/WebKit.h>
 
 @interface ShareViewController () <QLPreviewControllerDataSource, UIDocumentInteractionControllerDelegate>
 
@@ -43,9 +44,23 @@
         UIBarButtonItem *rightItem = [[UIBarButtonItem alloc]initWithCustomView:btn];
         rightItem;
     });
-    
+    [self showPreview];
 }
-
+- (void)showPreview {
+    NSString *jsString = @"var script = document.createElement('meta');"
+    "script.name = 'viewport';"
+    "script.content=\"width=device-width, initial-scale=1.0, minimum-scale=1.0, user-scalable=yes\";"
+    "document.getElementsByTagName('head')[0].appendChild(script);";
+    WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
+    WKUserScript *userScript = [[WKUserScript alloc] initWithSource:jsString injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:YES];
+    [configuration.userContentController addUserScript:userScript];
+    WKWebView *previewWebView = [[WKWebView alloc] initWithFrame:self.view.bounds configuration:configuration];
+    NSURL *accessURL = [[NSURL fileURLWithPath:self.filePath] URLByDeletingLastPathComponent];
+    [previewWebView loadFileURL:[NSURL fileURLWithPath:self.filePath] allowingReadAccessToURL:accessURL];
+    //NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL fileURLWithPath:self.fileLocalPath]];
+    //[previewWebView loadRequest:request];
+    [self.view addSubview:previewWebView];
+}
 // 分享
 - (void)rightAction {
     self.documentController = [UIDocumentInteractionController interactionControllerWithURL:[NSURL fileURLWithPath:self.filePath]];
